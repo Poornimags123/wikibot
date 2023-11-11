@@ -9,7 +9,6 @@ class CelebrityInfoBot:
         try:
             summary = wikipedia.summary(name)
         except wikipedia.exceptions.DisambiguationError as e:
-            # Handle disambiguation errors if multiple pages are found
             return f"Multiple options found. Please be more specific: {', '.join(e.options)}"
 
         except wikipedia.exceptions.HTTPTimeoutError as e:
@@ -23,7 +22,6 @@ class CelebrityInfoBot:
             "summary": summary
         }
 
-# Example usage
 celebrity_bot = CelebrityInfoBot()
 celebrity_name = input("Enter the celebrity name")
 celebrity_info = celebrity_bot.get_celebrity_summary(celebrity_name)
